@@ -7,3 +7,7 @@
 #ignore sbatch and slurm output
 *.sbatch
 *.out
+
+#ignore notebook checkpoint
+*.ipynb_checkpoints/
+
