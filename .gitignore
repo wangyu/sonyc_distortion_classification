@@ -4,5 +4,6 @@
 *.csv
 *.pkl
 
-#ignore slurm output
+#ignore sbatch and slurm output
+*.sbatch
 *.out
