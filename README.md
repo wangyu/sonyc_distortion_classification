@@ -9,6 +9,19 @@ https://en.wikipedia.org/wiki/Semi-supervised_learning#See_also
 **modAL introduction**
 https://cosmic-cortex.github.io/modAL/#introduction
 
+**Psedu Code**
+```
+while (convergence_rate < 0.80)
+    sensorId, timestamp = get_datapoint_to_be_labelled
+    wait:
+        play_audio(sensorId, timestamp)
+        input label ~ {1 | 0}
+    add labeled datapoint to seed
+    remove labeled datapoint from pool
+    retrain
+    evaluate - print accuracy numbers
+```
+
 ## Reading:
 Virginia R., Learning Classification with Unlabeled Data, https://papers.nips.cc/paper/831-learning-classification-with-unlabeled-data.pdf 
 
