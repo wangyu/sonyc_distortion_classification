@@ -23,6 +23,13 @@ while (convergence_rate < 0.80)
 ```
 
 ## Reading:
+### Web Resources:
+Datacamp General Intro: https://www.datacamp.com/community/tutorials/active-learning
+
+
+### Papers:
+
+
 Virginia R., Learning Classification with Unlabeled Data, https://papers.nips.cc/paper/831-learning-classification-with-unlabeled-data.pdf 
 
 Burr S., Active Learning Literature Survey http://burrsettles.com/pub/settles.activelearning.pdf
