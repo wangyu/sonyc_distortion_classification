@@ -11,3 +11,11 @@
 #ignore notebook checkpoint
 *.ipynb_checkpoints/
 
+#ignore annotation folder
+annotation-server-tools/
+
+#ignore view
+view
+
+#ignore itself
+.gitignore
