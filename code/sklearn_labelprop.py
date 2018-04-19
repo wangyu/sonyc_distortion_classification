@@ -7,22 +7,31 @@ import pickle
 
 
 # read in prepared data
-positive_xy_file = open('../positive_xy.pickle', 'rb')
+positive_xy_file = open('../data/positive_xy.pickle', 'rb')
 positive_xy = pickle.load(positive_xy_file)
 
-negative_xy_file = open('../negative_xy.pickle', 'rb')
+negative_xy_file = open('../data/negative_xy.pickle', 'rb')
 negative_xy = pickle.load(negative_xy_file)
 
-# stack both positive and negative data:
-train_xy = np.vstack((positive_xy, negative_xy))
+X_pool_file = open('../data/X_pool.pickle', 'rb')
+X_pool      = pickle.load(X_pool_file)
+
+# add dumpy -1 to the pool data. does not matter in this case:
+X_pool_dumpy = np.insert(X_pool, 128, 1, axis=-1)
+
+# stack all data together
+train_xy = np.vstack((positive_xy, negative_xy, X_pool_dumpy))
+
 
 # seperate into X and y
 X = train_xy[:,:128]    # first 128 digits
 y = train_xy[:,128:129] # last digit, 0 or 1
 
+
+
 # reserve some seeds for initial labeled training data
 # we assume that these data are correctly labeled!
-init_seeds = 20 # for both positive and negative labels
+init_seeds = 300 # for both positive and negative labels
 
 n_total_samples = train_xy.shape[0]
 n_labeled_points = 2 * init_seeds
@@ -33,7 +42,9 @@ max_iterations = 50 # test for 10 runs
 # positive: 0 ~ 20
 # negative: 171 ~ 171+20 = 191
 indices = np.arange(n_total_samples)
-unlabeled_indices = np.delete(indices, np.array([np.arange(0,21), np.arange(171,192)]), 0) # now indices inside this list are unlabled
+# unlabeled_indices = np.delete(indices, np.array([np.arange(0,init_seeds+1), np.arange(171,192)]), 0) # now indices inside this list are unlabled
+unlabeled_indices = np.delete(indices, np.array(np.arange(0, init_seeds*2+1)), 0)
+
 
 # start iterations:
 for i in range(max_iterations):
@@ -60,7 +71,6 @@ for i in range(max_iterations):
     print("Confusion matrix")
     print(cm)
 
-
     # compute the entropies of transduced label distributions
     pred_entropies = stats.distributions.entropy(lp_model.label_distributions_.T)
 
@@ -74,11 +84,7 @@ for i in range(max_iterations):
         # TODO!
         # add the wait-and-input loop here!!!
         # we have to manually type in the label here!!! Change this line!!!
-        # true_new_label =
-        print("Please label: index="+str(classified_index))
-        # provide sensor id and timestamp
-        true_new_label = y[classified_index]
-
+        true_new_label = input("Please label for index="+str(classified_index))
 
         # assign the true_new_label to the entry:
         y[classified_index] = true_new_label
@@ -88,7 +94,6 @@ for i in range(max_iterations):
         unlabeled_indices = np.delete(unlabeled_indices, index_of_the_entry_to_be_removed)
 
         # we got one more data-point labeled!!!
-
         n_labeled_points += 1
 
     print(str(len(unlabeled_indices))+" more data-points to be classified...")
