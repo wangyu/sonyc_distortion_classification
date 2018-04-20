@@ -62,8 +62,9 @@ def decrypt_and_load_audio(audio_path, sensor_id, timestamp, sample_rate=44100, 
                                                                 sample_rate, **kwargs)
 
     # if frame is specified, trim the audio to frame-1:frame+1
+
     if frame is not None:
-        y = y[sr*(frame-1):sr*(frame+1)]
+        y = y[sr*frame:sr*(frame+1)]
         
     return IPython.display.Audio(data=y, rate=sr)
 

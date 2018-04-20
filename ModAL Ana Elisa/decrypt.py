@@ -110,7 +110,7 @@ def decrypt(url,
     cipher = AES.new(decrypt_key)
 
     decrypted_data = cipher.decrypt(
-        base64.b64decode(encrypted_data_filebuf)).rstrip('{')
+        base64.b64decode(encrypted_data_filebuf)).rstrip(bytes('{', 'utf-8'))
 
     if output_file is not None:
         with open(output_file, 'wb') as f:
