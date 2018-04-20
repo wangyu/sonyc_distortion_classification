@@ -25,7 +25,8 @@ view
 *.pem
 
 #ignore decription scripts
-decryption.py
+decrypt.py
 audio_decryption.py
 utils.py
-
+audio_decryption
+__pycache__
