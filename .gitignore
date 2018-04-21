@@ -19,3 +19,14 @@ view
 
 #ignore itself
 .gitignore
+
+#ignore key and cert
+*.key
+*.pem
+
+#ignore decription scripts
+decrypt.py
+audio_decryption.py
+utils.py
+audio_decryption
+__pycache__
