@@ -1,0 +1,1 @@
+# read Hinton's paper
