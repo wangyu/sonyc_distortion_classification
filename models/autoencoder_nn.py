@@ -1,22 +1,7 @@
 import tensorflow as tf
 import numpy as np
-import pickle
 
-# Import SoNYC Data:
-#   The length of SoNYC Audio Embedding is 128.
-sonyc_length = 128
-class_length = 1
-print("** Loading SoNYC datasets **")
-negative_xy = pickle.load(open("../data/negative_xy.pickle", "rb"))
-positive_xy = pickle.load(open("../data/positive_xy.pickle", "rb"))
-# X_pool = pickle.load(open("../data/X_pool.pickle", "rb")) # 1000 * 128
-X_pool = pickle.load(open("../data/X_pool_10000_new.pickle", "rb")) # 10000 * 132
 
-# Modify the SoNYC data (a little bit) just for this model:
-X_pool = X_pool[:,:sonyc_length]
-labeled_data = np.vstack((positive_xy, negative_xy))
-labels = labeled_data[:, sonyc_length]
-Mat_Label = np.split(labeled_data, [sonyc_length], axis=1)[0]
 
 # Training parameters:
 learning_rate = 0.01

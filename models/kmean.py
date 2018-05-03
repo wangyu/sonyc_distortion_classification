@@ -18,7 +18,7 @@ negative_xy = pickle.load(open("../data/negative_xy.pickle", "rb"))
 positive_xy = pickle.load(open("../data/positive_xy.pickle", "rb"))
 
 # Choose the data source
-# x_pool_file = "../data/X_pool.pickle" # 1000 * 128
+x_pool_file = "../data/X_pool.pickle" # 1000 * 128
 # x_pool_file = "../data/X_pool_10000_new.pickle" # 10000 * 132
 # x_pool_file = "../data/X_pool_100000_new.pickle"
 # x_pool_file = "../data/X_pool_100000_random.pickle"

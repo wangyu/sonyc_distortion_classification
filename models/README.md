@@ -33,6 +33,7 @@ One argument is that why can't we just use one labelled datapoint for each class
 |I128-E128:64:32:24-D32:64:128  |            |            |            |
 |I129-E64:32-D64:128            |            |            |            |
 #### Conclusion:
+Debugging
 #### Discussion:
 
 ## 3. K-Means
@@ -52,8 +53,11 @@ The prior distribution of the unlabeled dataset makes a big difference in K-mean
 
 ## 4. t-SNE
 #### Method:
+https://distill.pub/2016/misread-tsne/
 #### Result:
+Good for visualization, but where to find the class edge?
 #### Conclusion:
+Need further investigation
 #### Discussion:
 
 ## 5. Manifold Regularization
